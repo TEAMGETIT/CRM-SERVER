@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import authenticate
-from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.models import Token, logout
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
@@ -167,7 +167,7 @@ def mail_events(request):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def logout(request):
+def user_logout(request):
     request.user.auth_token.delete()
     logout(request)
     return JsonResponse({
