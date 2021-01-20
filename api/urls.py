@@ -12,5 +12,4 @@ urlpatterns = [
     url(r'mail_id/(?P<mail_id>[0-9]+)/folder_name/(?P<folder_name>[\w\-]+)/mail_details$', get_mail_details),
     url(r'mail_events$', mail_events),
     url(r'mail_folder_data$', get_mail_folder_data),
-    url(r'logout$', user_logout),
 ]
