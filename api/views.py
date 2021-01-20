@@ -164,3 +164,13 @@ def mail_events(request):
     if mail_id and folder_name and is_read:
          mark_mail_read(mail_id,folder_name, user )
     return JsonResponse({'status': 'success'})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def logout(request):
+    request.user.auth_token.delete()
+    logout(request)
+    return JsonResponse({
+        'status': 'success',
+        'message': 'Successfully logged out.'
+    })
